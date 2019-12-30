@@ -16,7 +16,7 @@ stages {
 
       // Get the Maven tool.
      
- // ** NOTE: This 'M3' Maven tool must be configured
+ //// ** NOTE: This 'M3' Maven tool must be configured
  
      // **       in the global configuration.   
      }
