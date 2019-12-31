@@ -49,9 +49,9 @@ stages {
       withSonarQubeEnv('sonarqube') {
           sh "${scannerHome}/bin/sonar-scanner"
        }
-        timeout(time: 4, unit: 'MINUTES') {
-           waitForQualityGate abortPipeline: true
-       }
+     //  timeout(time: , unit: 'MINUTES') {
+     //      waitForQualityGate abortPipeline: true
+       //}
    }
 }
      stage('Artifact upload') {
