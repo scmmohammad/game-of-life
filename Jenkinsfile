@@ -41,14 +41,14 @@ stages {
       
       //}
  //}
- stage('Sonarqube') {
-   environment {
-       scannerHome = tool 'sonarqube'
-   }
-    steps {
-      withSonarQubeEnv('sonarqube') {
-          sh "${scannerHome}/bin/sonar-scanner"
-       }
+ //stage('Sonarqube') {
+  // environment {
+    //   scannerHome = tool 'sonarqube'
+   //}
+//    steps {
+  //    withSonarQubeEnv('sonarqube') {
+    //      sh "${scannerHome}/bin/sonar-scanner"
+      // }
      //  timeout(time: , unit: 'MINUTES') {
      //      waitForQualityGate abortPipeline: true
        //}
@@ -64,8 +64,7 @@ stages {
         //sh label: '', script: 'ansible-playbook deploy.yml'
       //}
  //}
-}
-//post {
+    //post {
     //    success {
       //      archiveArtifacts 'gameoflife-web/target/*.war'
         //}
