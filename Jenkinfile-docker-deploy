@@ -52,7 +52,7 @@ stages {
         
     //}
 //}
-     stage('Artifact upload') {
+     stage('Artifact upload to nexus') {
       steps {
 nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: 'anilkumar', file: '**/*.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'meven_id', nexusUrl: '18.219.80.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'      }
  }
