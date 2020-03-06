@@ -54,7 +54,7 @@ stages {
 //}
      stage('Artifact upload to nexus') {
       steps {
-nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: 'anilkumar', file: 'target/*.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'meven_id', nexusUrl: '18.219.80.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'      }
+nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: 'anilkumar', file: '/var/lib/jenkins/workspace/gameoflife-web/target/*.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'meven_id', nexusUrl: '18.219.80.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'      }
  }
     stage('Build and Push Docker Image') {
       steps {
