@@ -54,8 +54,7 @@ stages {
 //}
      stage('Artifact upload') {
       steps {
-     nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'mdavenrepo', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'gameoflife-web/target/gameoflife.war']], mavenCoordinate: [artifactId: 'gameoflife1', groupId: 'com.wakaleo.gameoflife', packaging: 'war', version: '$BUILD_NUMBER']]]
-      }
+nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: 'anilkumar', file: '**/*.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'meven_id', nexusUrl: '18.219.80.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'      }
  }
     stage('Build and Push Docker Image') {
       steps {
