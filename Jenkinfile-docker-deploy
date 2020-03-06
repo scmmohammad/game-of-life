@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent {label 'slave2'}
     tools { 
         maven 'maven' 
       
@@ -43,10 +43,10 @@ stages {
  }
  stage('Sonarqube') {
     environment {
-        scannerHome = tool 'Sonar'
+        scannerHome = tool 'sonar'
     }
     steps {
-        withSonarQubeEnv('Sonar') {
+        withSonarQubeEnv('sonar') {
             sh "${scannerHome}/bin/sonar-scanner"
         }
         timeout(time: 10, unit: 'MINUTES') {
