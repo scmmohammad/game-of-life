@@ -70,7 +70,7 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
                                  docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER'''
                                  }
       }
- }
+      }
 
 post {
         success {
