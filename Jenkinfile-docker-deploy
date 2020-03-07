@@ -67,9 +67,9 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
      stage('push to Hub')
       {
      steps{
-      withCredentials([string(credentialsId: 'docker-creDs', variable: 'docker-creDs')]) {
-                                 sh "docker login -u anilkumblepuli -p ${docker-creDs}"
-                                sh" docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER"
+       withCredentials([string(credentialsId: 'doc_Dcred', variable: 'doc_Dcred')]) {
+             sh "docker login -u anilkumblepuli -p ${doc_Dcred}"
+             sh" docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER"
                                  }
       }
       }
