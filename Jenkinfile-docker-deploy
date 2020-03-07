@@ -10,7 +10,7 @@ stages {
      steps {
  //for display purposes
 
-      // Get some code from a GitHub repository
+    //   Get some code from a GitHub repository
 
       git 'https://github.com/raknas999/game-of-life.git'
 
@@ -41,17 +41,17 @@ stages {
       
       }
  }
- //stage('Sonarqube') {
-   // environment {
-     //   scannerHome = tool 'sonar'
-    //}
-    //steps {
-      //  withSonarQubeEnv('sonar') {
-        //    sh "${scannerHome}/bin/sonar-scanner"
-        //}
+  stage('Sonarqube') {
+    environment {
+       scannerHome = tool 'sonar'
+    }
+    steps {
+        withSonarQubeEnv('sonar') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
         
-    //}
-//}
+    }
+}
      stage('Artifact upload to nexus') {
       steps {
 nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: 'anilkumar', file: '/home/ubuntu/workspace/samp1/gameoflife-web/target/gameoflife.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'meven_id', nexusUrl: '18.219.80.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'      }
