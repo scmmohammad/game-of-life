@@ -57,12 +57,12 @@ stages {
 nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: 'anilkumar', file: '/home/ubuntu/workspace/samp1/gameoflife-web/target/gameoflife.war', type: 'war']], credentialsId: 'nexu-id', groupId: 'meven_id', nexusUrl: '18.219.80.93:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'mavenrepo', version: '$BUILD_ID'      }
  }
     stage('Build and tag')
-    {
-      steps {
+        {
+      steps{
         sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
                                  docker tag gameoflife-image:$BUILD_NUMBER docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER
       }
-      }
+     }
       stage('push to Hub')
       {
       steps{
