@@ -73,6 +73,7 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
                                  }
       }
       }
+      }
    post{
         success {
             archiveArtifacts 'gameoflife-web/target/*.war'
