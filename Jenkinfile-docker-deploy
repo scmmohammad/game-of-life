@@ -59,7 +59,7 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
     stage('Build and Push Docker Image') {
       steps {
         sh label: '', script: '''docker build -t anilkumblepuli/gameoflife-image:$BUILD_NUMBER .
-                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER
+                                 //docker tag gameoflife-image:$BUILD_NUMBER docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER
                                  docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER'''
       }
  }
