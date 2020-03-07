@@ -59,21 +59,20 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
     stage('Build and tag')
         {
       steps{
-        sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
-                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER
+        sh 'docker build -t gameoflife-image:$BUILD_NUMBER .'
+        sh "docker tag gameoflife-image:$BUILD_NUMBER docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER"
       }
      }
-      stage('push to Hub')
+     stage('push to Hub')
       {
-      steps{
+     steps{
       withCredentials([string(credentialsId: 'docker-creDs', variable: 'docker-creDs')]) {
                                  docker login -u anilkumblepuli -p ${docker-creDs}
                                  docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER'''
                                  }
       }
       }
-
-post {
+   post{
         success {
             archiveArtifacts 'gameoflife-web/target/*.war'
         }
