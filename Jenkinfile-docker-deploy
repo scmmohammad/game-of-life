@@ -80,7 +80,7 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
 ansible-playbook deploycreate.yml''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ansible/playbook', remoteDirectorySDF: false, removePrefix: 'home/ansible', sourceFiles: 'home/ansible/*.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
       }       
-               
+      }         
                
 post{
         success {
@@ -90,5 +90,4 @@ post{
             mail to:"sankar.dadi@qentelli.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
-}
 }
