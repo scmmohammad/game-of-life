@@ -71,16 +71,17 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
        withCredentials([string(credentialsId: 'doc_Dcred', variable: 'doc_Dcred')]) {
              sh "docker login -u anilkumblepuli -p ${doc_Dcred}"
              sh" docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER"
-                                 }
-      }
-      stage('deploy to kubernetes')
+               }
+               
+        stage('deploy to kubernetes')
       {
       steps{
       sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ansible-playbook servicecreate.yml
 ansible-playbook deploycreate.yml''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ansible/playbook', remoteDirectorySDF: false, removePrefix: 'home/ansible', sourceFiles: 'home/ansible/*.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
-      }
-
+      }       
+               
+               
 post{
         success {
             archiveArtifacts 'gameoflife-web/target/*.war'
