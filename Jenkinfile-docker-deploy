@@ -72,7 +72,7 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
              sh "docker login -u anilkumblepuli -p ${doc_Dcred}"
              sh" docker push docker.io/anilkumblepuli/gameoflife-image:$BUILD_NUMBER"
                }
-               
+          }     
      stage('deploy to kubernetes'){
       steps{
       sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ansible-playbook servicecreate.yml
