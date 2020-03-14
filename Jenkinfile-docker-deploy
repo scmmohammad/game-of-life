@@ -84,4 +84,4 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
         }
     }       
 }
-}
+
