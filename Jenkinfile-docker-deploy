@@ -75,7 +75,6 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
           }     
    } 
    }
-   }
       post{
         success {
             archiveArtifacts 'gameoflife-web/target/*.war'
@@ -84,4 +83,5 @@ nexusArtifactUploader artifacts: [[artifactId: 'mavenartifactory', classifier: '
             mail to:"sankar.dadi@qentelli.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
+}
 }
